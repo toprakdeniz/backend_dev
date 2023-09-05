@@ -53,3 +53,15 @@ HTTP over QUICT (HTTP/3)
 - Replaces TCP with QUIC (UDP with Congestion Control)
 - All the features of HTTP/2
 - Without HOL (Head of line blocking)
+
+
+## Difference between HTTP/1.1 pipelining and HTTP/2 multiplexing and Head of line blocking
+
+HTTP/1.1 without pipelining: Each HTTP request over the TCP connection must be responded to before the next request can be made.
+
+HTTP/1.1 with pipelining: Each HTTP request over the TCP connection may be made immediately without waiting for the previous request's response to return. The responses will come back in the same order.
+
+HTTP/2 multiplexing: Each HTTP request over the TCP connection may be made immediately without waiting for the previous response to come back. The responses may come back in any order.
+HTTP/2 solves head of line blocking. Yet, there is another head of line blocking on tcp level. One lost packet in TCP stream makes all streams wair until that packet is re-transmitted, and recived. This HOL is solved by QUIC protocol.
+
+QUIC is a "tcp-like" protocol implemented over UDP where each stream is independent so that lost packet only halts the particular stream which the lost packet belongs to, while other streams can continue.
