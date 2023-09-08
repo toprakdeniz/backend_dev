@@ -1,6 +1,10 @@
+The web is protected under the HTTP protocol. Websocket starts with HTTP and then upgrades to Websocket if the server supports it.
+
 WebSockets
-Bidirectional communications on the web
 - WebSockets are a protocol that allows for bidirectional communication between a client and a server over a TCP connection
+
+TCP is too powerful to expose to the web. 
+
 
 
 Http 1.0
@@ -39,6 +43,12 @@ Sec-WebSocket-Protocol: chat
 ```
 
 Upgrade header should be understand by the server.
+
+hop-by-hop header:
+
+
+
+
 
 
 # Use cases
